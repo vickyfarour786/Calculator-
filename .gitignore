@@ -1,0 +1,66 @@
+#include <stdio.h>
+// Function to calculate percentage of a number
+float percentage_of_number(float percent, float num) {
+    return (percent * num) / 100.0;
+}
+
+// Function to calculate percentage increase/decrease
+float percentage_change(float oldVal, float newVal) {
+    return ((newVal - oldVal) / oldVal) * 100.0;
+}
+
+// Function to simplify a ratio
+void simplify_ratio(int a, int b) {
+    int x = a, y = b, temp;
+
+    while (y != 0) {   // Euclidean algorithm for GCD
+        temp = y;
+        y = x % y;
+        x = temp;
+    }
+
+    printf("Simplified Ratio = %d : %d\n", a / x, b / x);
+}
+
+// Function to convert ratio to percentage
+float ratio_to_percentage(float a, float b) {
+    return (a / b) * 100.0;
+}
+
+int main() {
+    int choice;
+
+    do {
+        printf("\n====== Percentage & Ratio Calculator ======\n");
+        printf("1. Calculate percentage of a number\n");
+        printf("2. Calculate percentage increase/decrease\n");
+        printf("3. Simplify a ratio\n");
+        printf("4. Convert ratio to percentage\n");
+        printf("5. Exit\n");
+            case 3: {
+                int a, b;
+                printf("Enter ratio (a:b): ");
+                scanf("%d %d", &a, &b);
+                simplify_ratio(a, b);
+                break;
+            }
+
+            case 4: {
+                float a, b;
+                printf("Enter ratio (a:b): ");
+                scanf("%f %f", &a, &b);
+                printf("Ratio in percentage = %.2f%%\n", ratio_to_percentage(a, b));
+                break;
+            }
+
+            case 5:
+                printf("Exiting... Thank you!\n");
+                break;
+
+            default:
+                printf("Invalid choice! Try again.\n");
+        }
+    } while (choice != 5);
+
+    return 0;
+}
